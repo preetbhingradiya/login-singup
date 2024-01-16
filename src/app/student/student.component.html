@@ -11,9 +11,9 @@
     <span *ngIf="studentForm.get('name').errors?.['noSpaceAllowed'] " class="validation">*No space allowed</span><br>
 
   <span>GENDER :-</span>
-  <input type="radio" placeholder="Enter Password" value="male" formControlName="gender"  >
+  <input type="radio" placeholder="Enter Password" value="male" formControlName="gender" [(ngModel)]="gender"    >
   <label>Male</label>
-  <input type="radio" placeholder="Enter Password" value="female"  formControlName="gender">
+  <input type="radio" placeholder="Enter Password" value="female"  formControlName="gender" [(ngModel)]="gender">
   <label>Female</label><br><br>
 
     <span>STD :-</span>
@@ -21,8 +21,9 @@
     <span *ngIf="studentForm.get('std').errors?.['required'] && studentForm.get('std').touched"
       class="validation">*This field is required</span><br>
 
-  <button type="submit" [disabled]="studentForm.invalid">Submit</button>
+  <button type="submit" [disabled]="studentForm.invalid" *ngIf="!isEditing">Submit</button>
 </form>
+<button  *ngIf="isEditing" (click)="onEditChanged()">Edit</button>
 
 <table border="3x" style="margin-top: 20px;text-align: center">
   <thead>

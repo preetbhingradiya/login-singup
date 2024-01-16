@@ -18,9 +18,9 @@ export class StudentService {
     return this.http.post(this.url,data)
   }
 
-  editStudent(data:any,id:any){
+  editStudent(id:any,data:any){
     let updateurl=`${this.url}/${id}`
-    this.http.put(updateurl,id)
+    return this.http.put(updateurl,data)
   }
 
   deleteStudent(id:any){

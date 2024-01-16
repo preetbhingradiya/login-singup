@@ -16,15 +16,12 @@ export class StudentComponent implements OnInit {
   private student = inject(StudentService)
   students: any;
   isEditing: boolean = false;
-  isEditingID: number;
 
+  currentID:any
   rollno:number
   name:string;
   std:number
-
-  @ViewChild('roll') editRoll:ElementRef
-  @ViewChild('name') editName:ElementRef
-  @ViewChild('std') editStd:ElementRef
+  gender:any;
 
   studentForm=new  FormGroup({
     rollno:new FormControl(null,[Validators.required]),
@@ -66,15 +63,29 @@ export class StudentComponent implements OnInit {
   }
 
   EditClick(id:any,data:any){
-    this.isEditingID=id
     this.isEditing=true
 
+    this.currentID=id
     this.rollno=data.rollValue
     this.name=data.nameValue
+    this.gender=data.genderValue
     this.std=data.stdValue
   }
 
-  EditStudent(){
+  onEditChanged(){
+    let edit={
+      id:this.currentID,
+      rollValue:this.rollno,
+      nameValue:this.name,
+      genderValue:this.gender,
+      stdValue:this.std
+    }
+
+    console.log(edit.id)
+    this.student.editStudent(this.currentID,edit).subscribe((ele)=>{
+      this.students.filter((res)=>res.id==this.currentID?edit:ele)
+      return this.students
+    })
 
   }
 }
