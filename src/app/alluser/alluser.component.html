@@ -1,0 +1,25 @@
+
+  <button (click)="findUser()">Show All User</button>
+
+  <table *ngIf="loginuser">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of users">
+        <td (click)="findUser()">{{item.userValue}}</td>
+        <td>{{item.emailValue}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="loginuser==false || loginuser==null" style="color: red;font-size: 20px;">*Please Login first and try again</p>
+
+  <a routerLink="/login">Login</a>
+  <br>
+  <br>
+  <a routerLink="/studentlist">Student-List</a>
+<router-outlet></router-outlet>

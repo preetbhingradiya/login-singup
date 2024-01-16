@@ -1,0 +1,49 @@
+<form [formGroup]="studentForm" (ngSubmit)="PostStudent()">
+  <span>ROLL NO :- </span>
+  <input type="number" placeholder="Enter Roll no "  formControlName="rollno" [(ngModel)]="rollno" [value]="rollno" #studentroll><br>
+  <span *ngIf="studentForm.get('rollno').errors?.['required'] && studentForm.get('rollno').touched"
+    class="validation">*This field is required</span><br>
+
+    <span>NAME :-</span>
+    <input type="email" placeholder="Enter Student name"  formControlName="name" [(ngModel)]="name" [value]="name" #studentname><br>
+    <span *ngIf="studentForm.get('name').errors?.['required'] && studentForm.get('name').touched"
+    class="validation">*This field is required</span>
+    <span *ngIf="studentForm.get('name').errors?.['noSpaceAllowed'] " class="validation">*No space allowed</span><br>
+
+  <span>GENDER :-</span>
+  <input type="radio" placeholder="Enter Password" value="male" formControlName="gender"  >
+  <label>Male</label>
+  <input type="radio" placeholder="Enter Password" value="female"  formControlName="gender">
+  <label>Female</label><br><br>
+
+    <span>STD :-</span>
+    <input type="number" placeholder="Enter Standerd" formControlName="std" [(ngModel)]="std" [value]="std" #studentstd><br>
+    <span *ngIf="studentForm.get('std').errors?.['required'] && studentForm.get('std').touched"
+      class="validation">*This field is required</span><br>
+
+  <button type="submit" [disabled]="studentForm.invalid">Submit</button>
+</form>
+
+<table border="3x" style="margin-top: 20px;text-align: center">
+  <thead>
+    <tr>
+      <th>Roll No</th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Std</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+    <tbody>
+      <tr *ngFor="let item of students">
+        <td>{{item.rollValue}}</td>
+        <td>{{item.nameValue}}</td>
+        <td>{{item.genderValue}}</td>
+        <td>{{item.stdValue}}</td>
+        <th (click)="EditClick(item.id,item)" style="cursor: pointer;">Edit</th>
+        <!-- <th (click)="EditClick(item)">Edit-Save</th> -->
+        <th (click)="DeleteStudent(item.id)" style="cursor: pointer;">Delete</th>
+      </tr>
+    </tbody>
+</table>

@@ -1,0 +1,25 @@
+<h1>Register</h1>
+<form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+  <span>USERNAME :- </span>
+  <input type="text" placeholder="Enter user Name" name="user" formControlName="username"><br>
+  <span *ngIf="registerForm.get('username').errors?.['required'] && registerForm.get('username').touched"
+    class="validation">*This field is required</span>
+  <span *ngIf="registerForm.get('username').errors?.['noSpaceAllowed'] " class="validation">*No space allowed</span><br>
+
+  <span>EMAIL :-</span>
+  <input type="email" placeholder="Enter user Email" name="email" formControlName="email"><br>
+  <span *ngIf="registerForm.get('email').errors?.['required'] && registerForm.get('email').touched"
+    class="validation">*This field is required</span>
+  <span *ngIf="registerForm.get('email').errors?.['email'] && registerForm.get('email').touched"
+    class="validation">*Email is not valid</span><br>
+
+  <span>PASSWORD :-</span>
+  <input type="text" placeholder="Enter Password" name="password" formControlName="password"><br>
+  <span *ngIf="registerForm.get('password').errors?.['required'] && registerForm.get('password').touched"
+    class="validation">*This field is required</span>
+
+  <button type="submit" [disabled]="registerForm.invalid">Sign-Up</button>
+</form>
+
+<a routerLink="/login">Login</a>
+<router-outlet></router-outlet>

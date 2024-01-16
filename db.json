@@ -1,0 +1,31 @@
+{
+  "userData": [
+    {
+      "id": "fbc0",
+      "userValue": "jaggu",
+      "emailValue": "12regq@gmail.com",
+      "passwordValue": "1232e21"
+    },
+    {
+      "id": "eb31",
+      "userValue": "preet",
+      "emailValue": "12@gmail.com",
+      "passwordValue": "123"
+    },
+    {
+      "id": "2dd2",
+      "userValue": "VW",
+      "emailValue": "127styngh@gmail.com",
+      "passwordValue": "wdwq"
+    }
+  ],
+  "studentData": [
+    {
+      "id": "2f35",
+      "rollValue": 126,
+      "nameValue": "manshi",
+      "genderValue": "female",
+      "stdValue": 8
+    }
+  ]
+}
